@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -8,14 +9,14 @@ const session = require("express-session");
 
 const saucesRoutes = require("./routes/saucesRoutes");
 const userRoutes = require("./routes/userRoutes");
-
 const app = express();
 
 mongoose
-  .connect(
-    "mongodb+srv://theomaxiboss:POWAsram123456.@cluster1.d7epn.mongodb.net/SoPekocko?retryWrites=true&w=majority",
-    { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }
-  )
+  .connect(process.env.DB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then(function () {
     console.log("Connexion à MongoDB réussie");
   })
