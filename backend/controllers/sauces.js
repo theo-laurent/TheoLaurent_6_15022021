@@ -116,9 +116,7 @@ exports.likeSauce = function (req, res, next) {
       .catch(function (error) {
         res.status(400).json({ error });
       });
-  }
-
-  if (like === -1) {
+  } else if (like === -1) {
     Sauce.updateOne(
       {
         _id: sauceId,
@@ -138,9 +136,7 @@ exports.likeSauce = function (req, res, next) {
       .catch(function (error) {
         res.status(400).json({ error });
       });
-  }
-
-  if (like === 0) {
+  } else if (like === 0) {
     Sauce.findOne({
       _id: sauceId,
     })
