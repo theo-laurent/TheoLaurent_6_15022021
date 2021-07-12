@@ -37,9 +37,13 @@ exports.login = function (req, res, next) {
           } else {
             res.status(200).json({
               userId: user._id,
-              token: jwt.sign({ userId: user._id }, "TOKEN", {
-                expiresIn: "12h",
-              }),
+              token: jwt.sign(
+                { userId: user._id },
+                "TOKEN_FRAISE_MELON_CITRON",
+                {
+                  expiresIn: "12h",
+                }
+              ),
             });
           }
         });
